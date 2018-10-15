@@ -18,7 +18,7 @@ credentials = YAML.load(`rails credentials:show`)
 
 server credentials['production']['server'], user: credentials['production']['server_user'], roles: %w{web app db}
 
-set :server_name, credentials['production']['server_name']
+set :server_name, credentials['production']['domain_name']
 
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
@@ -26,8 +26,8 @@ set :deploy_user, credentials['production']['deploy_user']
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
 set :rails_env, :production
-set :enable_ssl, true
-set :force_ssl, true
+set :enable_ssl, false
+set :force_ssl, false
 
 # Custom SSH Options
 # ==================

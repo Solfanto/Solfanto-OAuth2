@@ -1,8 +1,10 @@
 # config valid only for Capistrano 3.4
 # lock '3.4.0'
 
+credentials = YAML.load(`rails credentials:show`)
+
 set :application, 'solfanto_oauth2'
-set :repo_url, 'git@github.com:Solfanto/Solfanto-OAuth2.git'
+set :repo_url, credentials['production']['git_server']
 
 set :secret_keys, [:rails_master_key]
 
@@ -31,7 +33,7 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml .rbenv-vars}
+set :linked_files, %w{.rbenv-vars}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
