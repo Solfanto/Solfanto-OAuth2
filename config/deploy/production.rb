@@ -14,13 +14,15 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server Rails.application.credentials[:production][:server], user: Rails.application.credentials[:production][:user], roles: %w{web app db}
+credentials = YAML.load(`rails credentials:show`)
 
-set :server_name, Rails.application.credentials[:production][:server_name]
+server credentials['production']['server'], user: credentials['production']['server_user'], roles: %w{web app db}
+
+set :server_name, credentials['production']['server_name']
 
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-set :deploy_user, Rails.application.credentials[:production][:deploy_user]
+set :deploy_user, credentials['production']['deploy_user']
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
 set :rails_env, :production
@@ -35,7 +37,7 @@ set :force_ssl, true
 # Global options
 # --------------
 set :ssh_options, {
-  keys: [Rails.application.credentials[:production][:ssh_key_path]],
+  keys: [credentials['production']['ssh_key_path']],
   forward_agent: false,
   auth_methods: %w(publickey)
 }

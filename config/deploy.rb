@@ -4,6 +4,8 @@
 set :application, 'solfanto_oauth2'
 set :repo_url, 'git@github.com:Solfanto/Solfanto-OAuth2.git'
 
+set :secret_keys, [:rails_master_key]
+
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
@@ -29,7 +31,7 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml .rbenv-vars}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
@@ -49,7 +51,6 @@ set :tests, []
 # for details of operations
 set(:config_files, %w(
   nginx.conf
-  database.yml
   log_rotation
 ))
 
