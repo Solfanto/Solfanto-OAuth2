@@ -1,0 +1,8 @@
+<div class="columns sign-up">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    <h1 class="title">Connected</h1>
+    <p>You are connected as: <i><%= current_user.email %></i>.</p>
+    <br>
+    <%= link_to "List of your apps", oauth_authorized_applications_path %>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="<%= root_url %>">
+        <span class="solfanto-brackets">{</span><span class="solfanto-logo">Solfanto</span>&nbsp;<span class="solfanto-sublogo">connect</span><span class="solfanto-brackets">}</span>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMore">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMore" class="navbar-menu">
+      <!-- <div class="navbar-start">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <%= current_user&.email %>
+        </div>
+        <% if current_user %>
+        <div class="navbar-item">
+          <div class="buttons">
+            <%= link_to(destroy_user_session_path, method: :delete, class: "button is-danger") do %>
+            <strong>Log Out</strong>
+            <% end %>
+          </div>
+        </div>
+        <% elsif !(controller.controller_name == "sessions" && (controller.action_name == "new")) %>
+          <%= form_for(:user, :url => session_path(:user)) do |f| %>
+            <div class="navbar-item field has-addons">
+              <div class="control">
+                <%= f.email_field :email, class: "input", placeholder: "Email" %>
+              </div>
+              <div class="control">
+                <%= f.password_field :password, class: "input", placeholder: "Password" %>
+              </div>
+              <p class="control">
+                <%= f.submit 'Log In', class: "button log-in" %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    

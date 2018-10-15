@@ -1,0 +1,51 @@
+<div class="columns sign-up">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <h1 class="title">Resend confirmation instructions</h1>
+        </div>
+      </div>
+    </div>
+    
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :email, class: "label" %>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control has-icons-left">
+              <%= f.email_field :email, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <%= f.submit "Resend confirmation instructions", class: "button is-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <br><br>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+

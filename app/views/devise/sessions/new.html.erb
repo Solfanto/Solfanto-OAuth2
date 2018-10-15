@@ -1,0 +1,85 @@
+<div class="columns sign-up">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <h1 class="title">Log in</h1>
+        </div>
+      </div>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= content_tag(:div, flash[:error], id: "flash_error", class: "notification") if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], id: "flash_notice", class: "notification") if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], id: "flash_alert", class: "notification") if flash[:alert] %>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :email, class: "label" %>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control has-icons-left">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= f.label :password, class: "label" %>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control has-icons-left">
+              <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control has-icons-left">
+                <%= f.check_box :remember_me %>
+                &nbsp;<%= f.label :remember_me %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          
+        </div>
+      <% end -%>
+      
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <%= f.submit "Log in", class: "button is-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <br><br>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
