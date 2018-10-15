@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   
   root to: 'static#index'
   get '/oauth/token/info/me', to: 'token_info#me'
+  
+  get '/.well-known/acme-challenge/:id' => 'static#letsencrypt'
 end
