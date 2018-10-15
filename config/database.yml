@@ -3,19 +3,24 @@ postgresql: &postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+default: &default
+  database: <%= Rails.application.credentials[Rails.env.to_sym][:db_name] %>
+  username: <%= Rails.application.credentials[Rails.env.to_sym][:db_username] %>
+  password: <%= Rails.application.credentials[Rails.env.to_sym][:db_password] %>
+
 development:
   <<: *postgresql
-  database: solfanto_oauth_dev
-  username: test
-  password:
+  <<: *default
 
 test:
   <<: *postgresql
-  database: solfanto_oauth_test
-  username: test
-  password: 
-    
+  <<: *default
+  
 production:
+  <<: *postgresql
+  <<: *default
+    
+heroku:
   <<: *postgresql
   database: myapp_production
   username: myapp

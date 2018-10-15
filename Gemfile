@@ -37,6 +37,8 @@ gem 'doorkeeper', '~> 5.0.1'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
+gem 'capistrano-3-rails-template', git: 'https://github.com/n-studio/capistrano-3-rails-template.git', branch: 'passenger', group: :development
+gem 'capistrano-db-tasks', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
