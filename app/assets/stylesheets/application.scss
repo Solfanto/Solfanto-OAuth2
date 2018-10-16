@@ -12,6 +12,8 @@
  *
  */
 
+$navbar-breakpoint: +mobile !default;
+
 @import "bulma";
 
 .navbar {
@@ -33,6 +35,15 @@
   .button.log-in {
     background-color: $light;
     font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar {
+    input[type="email"], input[type="password"] {
+      display: block;
+      width: 110px;
+    }
   }
 }
 
