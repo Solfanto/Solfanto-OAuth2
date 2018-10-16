@@ -26,8 +26,8 @@ set :deploy_user, credentials['production']['deploy_user']
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
 set :rails_env, :production
-set :enable_ssl, false
-set :force_ssl, false
+set :enable_ssl, true
+set :force_ssl, true
 
 # Custom SSH Options
 # ==================
