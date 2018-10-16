@@ -9,9 +9,9 @@ class StaticController < ApplicationController
 
   def letsencrypt
     if params[:id] == Rails.application.credentials[Rails.env.to_sym][:letsencrypt_acme_challenge]
-      render text: params[:id] + "." + Rails.application.credentials[Rails.env.to_sym][:letsencrypt_acme_challenge_secret] and return
+      render plain: params[:id] + "." + Rails.application.credentials[Rails.env.to_sym][:letsencrypt_acme_challenge_secret]
     else
-      render text: nil and return
+      render plain: nil
     end
   end
 end
