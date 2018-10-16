@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/n-studio/capistrano-3-rails-template.git
-  revision: bd4d3a211b92a3eca9ecaac27a55a4fecea531ca
+  revision: 83c6868e0dda1cf6c46f161003d7593aa6f0f119
   branch: passenger
   specs:
     capistrano-3-rails-template (0.0.1)
@@ -294,7 +294,7 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (3.1.0)
+    xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
