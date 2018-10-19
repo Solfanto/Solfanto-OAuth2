@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   root to: 'static#index'
   get '/oauth/token/info/me', to: 'token_info#me'
   
-  get '/.well-known/acme-challenge/:id' => 'static#letsencrypt'
+  get '/.well-known/acme-challenge/:id', to: 'static#letsencrypt'
+  
+  get '/test/mockup_callback', to: 'static#test_mockup_callback' if Rails.env.test?
 end
