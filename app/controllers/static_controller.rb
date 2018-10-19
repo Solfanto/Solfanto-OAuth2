@@ -14,4 +14,12 @@ class StaticController < ApplicationController
       render plain: nil
     end
   end
+  
+  def test_mockup_callback
+    if Rails.env.test?
+      render json: params
+    else
+      render json: {}
+    end
+  end
 end
