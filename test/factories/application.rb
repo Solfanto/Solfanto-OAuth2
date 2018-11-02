@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :application, class: Doorkeeper::Application do
+  factory :application, class: "Doorkeeper::Application" do
     uid { "00000000001" }
     name { "application_01" }
     secret { "application_secret_01" }
